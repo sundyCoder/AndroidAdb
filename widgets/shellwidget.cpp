@@ -238,7 +238,7 @@ void ShellWidget::executeCommand(QString command)
 {
     if (command == "qtadb -help")
     {
-        this->append(tr("\nQtADB shell help\n"));
+        this->append(tr("\WxADB shell help\n"));
         this->append(tr("CTRL+C                - interrupt executing command"));
         this->append(tr("ESC                   - interrupt executing command"));
         this->append(tr("Shift+CTRL+C          - copy selected text to clipboard"));

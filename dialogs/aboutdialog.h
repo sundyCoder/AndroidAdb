@@ -27,7 +27,7 @@
 #include <QDebug>
 #include "ui_aboutdialog.h"
 
-//https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5P6GM8DLCVMM6
+
 class AboutDialog : public QDialog,  public Ui::AboutDialog
 {
     Q_OBJECT

@@ -79,8 +79,8 @@ AppWidget::AppWidget(QWidget *parent) :
     connect(ui->comboBoxApps, SIGNAL(currentIndexChanged(QString)), this, SLOT(comboBoxAppsChanged()));
     connect(ui->buttonRefreshApps, SIGNAL(clicked()), this, SLOT(refreshApps()));
 
-    connect(this->ui->buttonOpenMarket, SIGNAL(clicked()), this, SLOT(openMarket()));
-    connect(this->ui->buttonAppBrain, SIGNAL(clicked()), this, SLOT(openAppBrain()));
+//    connect(this->ui->buttonOpenMarket, SIGNAL(clicked()), this, SLOT(openMarket()));
+//    connect(this->ui->buttonAppBrain, SIGNAL(clicked()), this, SLOT(openAppBrain()));
 
     connect(this->ui->editFilter, SIGNAL(textChanged(QString)), this, SLOT(filter()));
     connect(this->ui->comboFilter, SIGNAL(currentIndexChanged(int)), this, SLOT(filter()));
@@ -221,7 +221,7 @@ void AppWidget::backupsContextMenu(const QPoint &pos)
 
 void AppWidget::appsSelectedCount()
 {
-    this->ui->buttonOpenMarket->setDisabled(true);
+//    this->ui->buttonOpenMarket->setDisabled(true);
     this->ui->toolButtonBackup->setDisabled(true);
     this->ui->toolButtonRemoveBackup->setDisabled(true);
     this->ui->toolButtonRestore->setDisabled(true);
@@ -257,8 +257,8 @@ void AppWidget::appsSelectedCount()
                 this->ui->editCyrketVersion->setEnabled(true);
             }
 
-            this->ui->buttonOpenMarket->setDisabled(false);
-            this->ui->buttonAppBrain->setDisabled(false);
+//            this->ui->buttonOpenMarket->setDisabled(false);
+//            this->ui->buttonAppBrain->setDisabled(false);
             this->ui->toolButtonBackup->setDisabled(false);
             this->ui->toolButtonRemoveBackup->setDisabled(true);
             this->ui->toolButtonRestore->setDisabled(true);
@@ -286,8 +286,8 @@ void AppWidget::appsSelectedCount()
             this->ui->editAppsVersion->setEnabled(true);
             this->ui->editAppsSize->setEnabled(true);
             this->ui->editAppsPackageName->setEnabled(true);
-            this->ui->buttonOpenMarket->setDisabled(false);
-            this->ui->buttonAppBrain->setDisabled(false);
+//            this->ui->buttonOpenMarket->setDisabled(false);
+//            this->ui->buttonAppBrain->setDisabled(false);
             this->ui->toolButtonBackup->setDisabled(true);
             this->ui->toolButtonRemoveBackup->setDisabled(false);
             this->ui->toolButtonRestore->setDisabled(false);
@@ -311,8 +311,8 @@ void AppWidget::appsSelectedCount()
             this->ui->editAppsSize->setEnabled(true);
             this->ui->editAppsPackageName->setEnabled(true);
             this->ui->editCyrketVersion->setDisabled(true);
-            this->ui->buttonOpenMarket->setDisabled(true);
-            this->ui->buttonAppBrain->setDisabled(true);
+//            this->ui->buttonOpenMarket->setDisabled(true);
+//            this->ui->buttonAppBrain->setDisabled(true);
             this->ui->toolButtonBackup->setDisabled(false);
             this->ui->toolButtonRemoveBackup->setDisabled(true);
             this->ui->toolButtonRestore->setDisabled(true);
@@ -331,8 +331,8 @@ void AppWidget::appsSelectedCount()
 
 void AppWidget::comboBoxAppsChanged()
 {
-    this->ui->buttonOpenMarket->setDisabled(true);
-    this->ui->buttonAppBrain->setDisabled(true);
+//    this->ui->buttonOpenMarket->setDisabled(true);
+//    this->ui->buttonAppBrain->setDisabled(true);
     this->ui->toolButtonBackup->setDisabled(true);
     this->ui->toolButtonRemoveBackup->setDisabled(true);
     this->ui->toolButtonRestore->setDisabled(true);
@@ -615,7 +615,7 @@ void AppWidget::insertApp(App app)
 
 void AppWidget::missingAapt()
 {
-    QMessageBox *msgBox = new QMessageBox(QMessageBox::Critical, tr("Missing aapt"), tr("QtADB did not found aapt.\nDownload it and place in one directory with adb.\nAfter You place it in correct directory click Refresh button"));
+    QMessageBox *msgBox = new QMessageBox(QMessageBox::Critical, tr("Missing aapt"), tr("WxADB did not found aapt.\nDownload it and place in one directory with adb.\nAfter You place it in correct directory click Refresh button"));
     QPushButton *download = msgBox->addButton(tr("Download", "missing aapt message button"), QMessageBox::AcceptRole);
     QPushButton *closeMsg = msgBox->addButton(tr("Cancel", "missing aapt message button"), QMessageBox::RejectRole);
 
@@ -834,7 +834,7 @@ void AppWidget::on_toolButtonRemoveBackup_pressed()
         return;
 
     QString oldPath=this->phone->getPath();
-    this->phone->setPath("/sdcard/QtADB/backup/");
+    this->phone->setPath("/sdcard/WxADB/backup/");
     while (backupList.length()>0)
     {
         this->phone->remove(backupList.first().packageName+".png");
@@ -983,7 +983,7 @@ void ThreadBackups::run()
     Backup backupFound;
     int i;
 
-    proces->start("\"" + this->sdk + "\"adb shell busybox ls /sdcard/QtADB/backup/*.txt");
+    proces->start("\"" + this->sdk + "\"adb shell busybox ls /sdcard/WxADB/backup/*.txt");
 
     proces->waitForFinished(-1);
     output = proces->readAll();
@@ -1002,12 +1002,12 @@ void ThreadBackups::run()
         backupFound.packageName = outputLines.takeFirst();
         backupFound.packageName.remove(QRegExp("^.+/"));
         backupFound.packageName.remove(QRegExp("\\.txt\\s+$"));
-        proces->start("\"" + this->sdk + "\"adb shell cat /sdcard/QtADB/backup/"+backupFound.packageName+".txt");
+        proces->start("\"" + this->sdk + "\"adb shell cat /sdcard/WxADB/backup/"+backupFound.packageName+".txt");
         proces->waitForFinished(-1);
         output = proces->readAll();
         if (!settings.contains("apps/"+backupFound.packageName+"/icon"))
         {
-            proces->start("\"" + this->sdk + "\"adb pull /sdcard/QtADB/backup/"+backupFound.packageName+".png "+QDir::currentPath()+"/icons/"+backupFound.packageName+".png");
+            proces->start("\"" + this->sdk + "\"adb pull /sdcard/WxADB/backup/"+backupFound.packageName+".png "+QDir::currentPath()+"/icons/"+backupFound.packageName+".png");
             proces->waitForFinished(-1);
 
             QFile icon(QDir::currentPath()+"/icons/"+backupFound.packageName+".png");
@@ -1048,7 +1048,7 @@ void ThreadBackups::run()
                 backupFound.appVersion = tmp;
             }
         }
-        proces->start("\"" + this->sdk + "\"adb shell ls  /sdcard/QtADB/backup/"+backupFound.packageName+".apk");
+        proces->start("\"" + this->sdk + "\"adb shell ls  /sdcard/WxADB/backup/"+backupFound.packageName+".apk");
         proces->waitForFinished(-1);
         output = proces->readAll();
         output.remove(QString("%1[0m").arg( QChar( 0x1b )));
@@ -1058,7 +1058,7 @@ void ThreadBackups::run()
             backupFound.withApk = false;
         else
             backupFound.withApk = true;
-        proces->start("\"" + this->sdk + "\"adb shell ls /sdcard/QtADB/backup/"+backupFound.packageName+".DATA.tar.gz");
+        proces->start("\"" + this->sdk + "\"adb shell ls /WxADB/WxADB/backup/"+backupFound.packageName+".DATA.tar.gz");
         proces->waitForFinished(-1);
         output = proces->readAll();
         output.remove(QString("%1[0m").arg( QChar( 0x1b )));
@@ -1270,9 +1270,9 @@ void ThreadApps::run()
     QProcess zip;
     QString temp;
     zip.setProcessChannelMode(QProcess::MergedChannels);
-    zip.start("\""+sdk+"\""+"adb shell mkdir /sdcard/QtADB");
+    zip.start("\""+sdk+"\""+"adb shell mkdir /sdcard/WxADB");
     zip.waitForFinished(-1);
-    zip.start("\""+sdk+"\""+"adb shell mkdir /sdcard/QtADB/tmp");
+    zip.start("\""+sdk+"\""+"adb shell mkdir /sdcard/WxADB/tmp");
     zip.waitForFinished(-1);
     settings.beginGroup("apps");
     QStringList settingsList=settings.childKeys();

@@ -39,7 +39,7 @@ MainWindow::MainWindow(QWidget *parent) :QMainWindow(parent),ui(new Ui::MainWind
         w = this->size().width();
     this->resize(w, h);
     QDir dir;
-    dir.mkdir(QDir::currentPath()+"/tmp/");
+    dir.mkdir(QDir::currentPath()+"/tmp/");    
 
     this->settingsWidget = new SettingsWidget;
     this->fileWidget = new FileWidget(this, this->settingsWidget);
@@ -57,7 +57,7 @@ MainWindow::MainWindow(QWidget *parent) :QMainWindow(parent),ui(new Ui::MainWind
 
 
     this->systemTray=new QSystemTrayIcon();
-    this->systemTray->setIcon(QIcon(":/icons/android.png"));
+    this->systemTray->setIcon(QIcon(":/icons/wenxun.png"));
     this->systemTray->show();
 
     QMenu *menu = new QMenu;
@@ -82,7 +82,7 @@ MainWindow::MainWindow(QWidget *parent) :QMainWindow(parent),ui(new Ui::MainWind
     qDebug()<<QDateTime::currentDateTime().toString("dd-MM-yyyy hh:mm:ss");
     qDebug()<<"App version - "<<QCoreApplication::applicationVersion();
 
-//    this->setWindowTitle("QtADB");
+//    this->setWindowTitle("WxADB");
 
     this->ui->centralWidget->setLayout(ui->gridLayout);
 
@@ -98,8 +98,8 @@ MainWindow::MainWindow(QWidget *parent) :QMainWindow(parent),ui(new Ui::MainWind
     this->addButton(QIcon(":icons/info.png"), tr("Phone info", "phone info button"), "Phone info", SLOT(showPagePhoneInfo()), Action::Device | Action::Recovery | Action::Disconnected | Action::Fastboot);
     this->addButton(QIcon(":icons/screenshot.png"), tr("Screenshot", "screenshot button"), "Screenshot", SLOT(showPageScreenshot()), Action::Device | Action::Recovery);
     this->addButton(QIcon(":icons/settings.png"), tr("Settings", "settings button"), "Settings", SLOT(showPageSettings()), Action::Disconnected | Action::Device | Action::Recovery | Action::Fastboot);
-    this->addButton(QIcon(":icons/shell.png"), tr("Shell", "shell button"), "Shell", SLOT(showPageShell()), Action::Device | Action::Recovery);
-    this->addButton(QIcon(":icons/messages.png"), tr("Messages", "messages button"), "Messages", SLOT(showPageMessages()), Action::Device);
+//    this->addButton(QIcon(":icons/shell.png"), tr("Shell", "shell button"), "Shell", SLOT(showPageShell()), Action::Device | Action::Recovery);
+//    this->addButton(QIcon(":icons/messages.png"), tr("Messages", "messages button"), "Messages", SLOT(showPageMessages()), Action::Device);
 //    this->addButton(QIcon(":icons/contacts.png"), tr("Contacts"), SLOT(showPageContacts()), Action::Device);
     this->addButton(QIcon(":icons/logcat.png"), tr("Logcat", "logcat button"), "Logcat", SLOT(showLogcat()), Action::Device | Action::Recovery);
 
@@ -126,8 +126,8 @@ MainWindow::MainWindow(QWidget *parent) :QMainWindow(parent),ui(new Ui::MainWind
     connect(this->ui->actionWifi, SIGNAL(triggered()), this, SLOT(restartInWifi()));
 
 //    //updates
-    connect(this->ui->actionCheck_for_updates, SIGNAL(triggered()), this, SLOT(updatesCheck()));
-    connect(&this->updateApp, SIGNAL(updateState(bool, QString, QString)), this, SLOT(updatesCheckFinished(bool, QString, QString)));
+//    connect(this->ui->actionCheck_for_updates, SIGNAL(triggered()), this, SLOT(updatesCheck()));
+//    connect(&this->updateApp, SIGNAL(updateState(bool, QString, QString)), this, SLOT(updatesCheckFinished(bool, QString, QString)));
 
     connect(&this->animation.animation, SIGNAL(finished()), this, SLOT(animationFinished()));
 
@@ -148,7 +148,7 @@ MainWindow::MainWindow(QWidget *parent) :QMainWindow(parent),ui(new Ui::MainWind
     if (this->settingsWidget->checkForUpdatesOnStart)
         this->updateApp.checkUpdates();
 
-//    this->setWindowTitle("QtADB " + QString::number(this->height()) + "x" + QString::number(this->width()));
+//    this->setWindowTitle("WxADB " + QString::number(this->height()) + "x" + QString::number(this->width()));
 }
 #ifdef WIN7PROGRESS
 bool MainWindow::winEvent(MSG *message, long *result)
@@ -160,7 +160,7 @@ void MainWindow::resizeEvent(QResizeEvent * event)
 {
     Q_UNUSED(event);
 
-//    this->setWindowTitle("QtADB " + QString::number(this->height()) + "x" + QString::number(this->width()));
+//    this->setWindowTitle("WxADB " + QString::number(this->height()) + "x" + QString::number(this->width()));
 
 }
 MainWindow::~MainWindow()
@@ -425,8 +425,8 @@ void MainWindow::phoneConnectionChanged(int state)
             this->ui->actionUsb->setEnabled(true);
             this->ui->actionWifi->setDisabled(true);
         }
-        this->ui->menuAdb->setEnabled(true);
-        this->ui->menuFastboot->setDisabled(true);
+        //this->ui->menuAdb->setEnabled(true);
+        //this->ui->menuFastboot->setDisabled(true);
 
         this->disableActions(Action::Device);
 
@@ -443,8 +443,8 @@ void MainWindow::phoneConnectionChanged(int state)
         this->ui->actionUsb->setDisabled(true);
         this->ui->actionWifi->setDisabled(true);
 
-        this->ui->menuAdb->setEnabled(true);
-        this->ui->menuFastboot->setDisabled(true);
+        //this->ui->menuAdb->setEnabled(true);
+        //this->ui->menuFastboot->setDisabled(true);
 
         this->disableActions(Action::Recovery);
         this->showPageRecovery();
@@ -453,8 +453,8 @@ void MainWindow::phoneConnectionChanged(int state)
     {
         this->ui->actionUsb->setDisabled(true);
         this->ui->actionWifi->setDisabled(true);
-        this->ui->menuAdb->setDisabled(true);
-        this->ui->menuFastboot->setEnabled(true);
+        //this->ui->menuAdb->setDisabled(true);
+        //this->ui->menuFastboot->setEnabled(true);
 
         this->disableActions(Action::Fastboot);
         this->showPageFastboot();
@@ -565,8 +565,8 @@ void MainWindow::showPageDisconnected()
 {
     this->ui->actionUsb->setDisabled(true);
     this->ui->actionWifi->setEnabled(true);
-    this->ui->menuAdb->setDisabled(true);
-    this->ui->menuFastboot->setDisabled(true);
+    //this->ui->menuAdb->setDisabled(true);
+    //this->ui->menuFastboot->setDisabled(true);
 
     this->setButtonDown(4);
 
@@ -638,7 +638,7 @@ void MainWindow::showPageFiles()
     this->fileWidget->leftDisplay();
     this->fileWidget->rightDisplay();
     this->startAnimation(this->fileWidget);
-    donateMessage();
+    //donateMessage();
 }
 
 void MainWindow::showPageContacts()
@@ -674,7 +674,7 @@ bool MainWindow::verifyKey(QString email,QString key)
 bool MainWindow::verifyRegistered(QString email)
 {
     email.append("qtadb");
-    email.prepend("QtADB");
+    email.prepend("WxADB");
 
     QSettings settings;
     QStringList keyList(settings.value("registerKey").toStringList());
@@ -898,7 +898,7 @@ void MainWindow::updatesCheckFinished(bool gotUpdate, QString oldVersion, QStrin
 
         if (msgBox->clickedButton() == getUpdatesMsg)
         {
-            QDesktopServices::openUrl ( QUrl("http://qtadb.wordpress.com/download/") );
+            //QDesktopServices::openUrl ( QUrl("http://qtadb.wordpress.com/download/") );
         }
         delete getUpdatesMsg;
         delete closeMsg;
@@ -1032,7 +1032,7 @@ void MainWindow::donateMessage()
         if (firstRun.addDays(14) <= QDate::currentDate() && runCount >= 10)
         {
             QMessageBox *msgBox = new QMessageBox(QMessageBox::Information, tr("Donate"),
-                                                  tr("It seems that you are using QtADB for a while now. Maybe consider a donation to a project..."));
+                                                  tr("It seems that you are using WxADB for a while now. Maybe consider a donation to a project..."));
             QPushButton *donate = msgBox->addButton(tr("Yes, I want to donate"), QMessageBox::AcceptRole);
             QPushButton *remaindLater = msgBox->addButton(tr("Remaind me later"), QMessageBox::RejectRole);
             QPushButton *dontRemaind = msgBox->addButton(tr("Do not bother me again"), QMessageBox::RejectRole);

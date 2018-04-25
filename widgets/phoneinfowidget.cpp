@@ -222,31 +222,32 @@ void PhoneInfoWidget::showPhoneInfo()
                 used=parts.takeLast();
             }
 
-            if (tmp=="/data")
-            {
-                ui->lineEditDataAvailable->setText(PhoneInfoWidget::humanReadableSize(available+"000"));
-                ui->lineEditDataUsed->setText(PhoneInfoWidget::humanReadableSize(used+"000"));
-                ui->lineEditDataSize->setText(PhoneInfoWidget::humanReadableSize(QString::number(used.toUInt()+available.toUInt())+"000"));
-                ui->progressBarData->setMaximum(used.toUInt()+available.toUInt());
-                ui->progressBarData->setValue(used.toUInt());
-            }
-            else if (tmp=="/system")
-            {
-                ui->lineEditSystemAvailable->setText(PhoneInfoWidget::humanReadableSize(available+"000"));
-                ui->lineEditSystemUsed->setText(PhoneInfoWidget::humanReadableSize(used+"000"));
-                ui->lineEditSystemSize->setText(PhoneInfoWidget::humanReadableSize(QString::number(used.toUInt()+available.toUInt())+"000"));
-                ui->progressBarSystem->setMaximum(used.toUInt()+available.toUInt());
-                ui->progressBarSystem->setValue(used.toUInt());
-            }
-            else if (tmp.contains(sdFolder) && !sdFolder.isEmpty())
-            {
-                ui->lineEditExtAvailable->setText(PhoneInfoWidget::humanReadableSize(available+"000"));
-                ui->lineEditExtUsed->setText(PhoneInfoWidget::humanReadableSize(used+"000"));
-                ui->lineEditExtSize->setText(PhoneInfoWidget::humanReadableSize(QString::number(used.toUInt()+available.toUInt())+"000"));
-                ui->progressBarExt->setMaximum(used.toUInt()+available.toUInt());
-                ui->progressBarExt->setValue(used.toUInt());
-            }
-            else if (tmp.contains("/sdcard"))
+//            if (tmp=="/data")  // sundy 20180425
+//            {
+//                ui->lineEditDataAvailable->setText(PhoneInfoWidget::humanReadableSize(available+"000"));
+//                ui->lineEditDataUsed->setText(PhoneInfoWidget::humanReadableSize(used+"000"));
+//                ui->lineEditDataSize->setText(PhoneInfoWidget::humanReadableSize(QString::number(used.toUInt()+available.toUInt())+"000"));
+//                ui->progressBarData->setMaximum(used.toUInt()+available.toUInt());
+//                ui->progressBarData->setValue(used.toUInt());
+//            }
+//            else if (tmp=="/system")
+//            {
+//                ui->lineEditSystemAvailable->setText(PhoneInfoWidget::humanReadableSize(available+"000"));
+//                ui->lineEditSystemUsed->setText(PhoneInfoWidget::humanReadableSize(used+"000"));
+//                ui->lineEditSystemSize->setText(PhoneInfoWidget::humanReadableSize(QString::number(used.toUInt()+available.toUInt())+"000"));
+//                ui->progressBarSystem->setMaximum(used.toUInt()+available.toUInt());
+//                ui->progressBarSystem->setValue(used.toUInt());
+//            }
+//            else if (tmp.contains(sdFolder) && !sdFolder.isEmpty())
+//            {
+//                ui->lineEditExtAvailable->setText(PhoneInfoWidget::humanReadableSize(available+"000"));
+//                ui->lineEditExtUsed->setText(PhoneInfoWidget::humanReadableSize(used+"000"));
+//                ui->lineEditExtSize->setText(PhoneInfoWidget::humanReadableSize(QString::number(used.toUInt()+available.toUInt())+"000"));
+//                ui->progressBarExt->setMaximum(used.toUInt()+available.toUInt());
+//                ui->progressBarExt->setValue(used.toUInt());
+//            }
+//            else
+            if (tmp.contains("/sdcard"))
             {
                 ui->lineEditSdcardAvailable->setText(PhoneInfoWidget::humanReadableSize(available+"000"));
                 ui->lineEditSdcardUsed->setText(PhoneInfoWidget::humanReadableSize(used+"000"));
@@ -255,8 +256,6 @@ void PhoneInfoWidget::showPhoneInfo()
                 ui->progressBarSdcard->setValue(used.toUInt());
             }
         }
-//        int i=0;
-        //df
 }
 
 void PhoneInfoWidget::on_pushButton_clicked()

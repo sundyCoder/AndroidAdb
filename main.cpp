@@ -27,13 +27,15 @@
 #include <QTextStream>
 #include <QFileDialog>
 
+QString log_txt = QDateTime::currentDateTime().toString("yyyy-MM-dd-hh-mm-ss");
+
 void customMessageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
    Q_UNUSED(context);
 
-//   QString dt = QDateTime::currentDateTime().toString("dd/MM/yyyy hh:mm:ss");
-//   QString txt = QString("[%1] ").arg(dt);
-    QString txt;
+   QString dt = QDateTime::currentDateTime().toString("dd/MM/yyyy hh:mm:ss");
+   QString txt = QString("[%1] ").arg(dt);
+    //QString txt;
 
    switch (type)
    {
@@ -52,7 +54,7 @@ void customMessageHandler(QtMsgType type, const QMessageLogContext &context, con
          break;
    }
 
-   QFile outFile("debug.log");
+   QFile outFile("./log/" +log_txt+".log");
    outFile.open(QIODevice::WriteOnly | QIODevice::Append);
 
    QTextStream textStream(&outFile);
@@ -93,11 +95,19 @@ void customMessageHandler(QtMsgType type, const QMessageLogContext &context, con
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication::setOrganizationName("Bracia");
-    QCoreApplication::setApplicationName("QtADB");
-    QCoreApplication::setApplicationVersion("0.8.1");
-    QCoreApplication::setOrganizationDomain("http://qtadb.com");
+    QDir dir;
+    QCoreApplication::setOrganizationName("闻讯");
+    QCoreApplication::setApplicationName("WxADB");
+    QCoreApplication::setApplicationVersion("0.0.1");
     Application a(argc, argv);
+    QString logDir = QDir::currentPath()+"/log/";
+    QString sdDir =  "C:/sdcard/";
+    if(!QDir().exists(logDir)){
+        dir.mkdir(logDir);
+    }
+    if(!QDir().exists(sdDir)){
+        dir.mkdir(sdDir);
+    }
     qInstallMessageHandler(customMessageHandler);
     a.loadTranslations(":/lang");
     a.loadTranslations(qApp->applicationDirPath());
@@ -226,7 +236,7 @@ int main(int argc, char *argv[])
             delete msgBox;
             return 1;
         }
-//        adbd cannot run as root in production builds
+//        adb cannot run as root in production builds
         proces.setProcessChannelMode(QProcess::MergedChannels);
         proces.start("\"" + sdk + "\"adb root");
         proces.waitForFinished(-1);
@@ -236,7 +246,7 @@ int main(int argc, char *argv[])
         if (tmp.contains("adbd cannot run as root in production builds") && !settings.value("disableProductionBuildsMessage",false).toBool())
         {
             QMessageBox *msgBox2 = new QMessageBox(QMessageBox::Critical, QObject::tr("error"),
-                                                   QObject::tr("adbd cannot run as root in production builds so You can't do anything with /system partition. Run anyway?\n(press save to run QtADB and disable this message)"),
+                                                   QObject::tr("adbd cannot run as root in production builds so You can't do anything with /system partition. Run anyway?\n(press save to run WxADB and disable this message)"),
                                                    QMessageBox::Yes | QMessageBox::No | QMessageBox::Save);
             int button = msgBox2->exec();
             if ( button == QMessageBox::No)

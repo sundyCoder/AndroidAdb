@@ -49,8 +49,7 @@ appInfo::appInfo(QWidget *parent, App *app) :
     QSettings settings;
     sdk = settings.value("sdkPath").toString();
     QProcess proc;
-    proc.start("\"" + sdk + "\"adb shell busybox ls /data/app/"
-               + this->app->packageName + "*");
+    proc.start("\"" + sdk + "\"adb shell busybox ls /data/app/" + this->app->packageName + "*");
     proc.waitForFinished(-1);
     QString output = proc.readAll();
     if (!output.contains("No such file or directory"))
@@ -94,8 +93,7 @@ appInfo::appInfo(App *app) :
     QSettings settings;
     sdk = settings.value("sdkPath").toString();
     QProcess proc;
-    proc.start("\"" + sdk + "\"adb shell busybox ls /data/app/"
-               + this->app->packageName + "*");
+    proc.start("\"" + sdk + "\"adb shell busybox ls /data/app/" + this->app->packageName + "*");
     proc.waitForFinished(-1);
     QString output = proc.readAll();
     if (!output.contains("No such file or directory"))

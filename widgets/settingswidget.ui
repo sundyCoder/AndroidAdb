@@ -22,156 +22,18 @@
      <height>571</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="gridLayout_7" columnstretch="0,1,10,0">
-    <item row="0" column="2">
-     <spacer name="verticalSpacer_37">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Fixed</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>5</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="7" column="1">
-     <spacer name="verticalSpacer_38">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Fixed</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>5</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="1" column="3">
-     <spacer name="verticalSpacer_39">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Fixed</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>5</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="1" column="0">
-     <spacer name="verticalSpacer_40">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Fixed</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>5</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="1" column="1">
-     <widget class="QListWidget" name="listWidget">
-      <property name="editTriggers">
-       <set>QAbstractItemView::NoEditTriggers</set>
-      </property>
-      <item>
-       <property name="text">
-        <string>General</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>File manager</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>App manager</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Animations</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Shell</string>
-       </property>
-      </item>
-     </widget>
-    </item>
+   <layout class="QGridLayout" name="gridLayout_7" columnstretch="0,0,0,0">
     <item row="5" column="1">
-     <widget class="QPushButton" name="buttonRemoveSettings">
+     <widget class="QPushButton" name="pushButtonChangeSDKPath">
       <property name="text">
-       <string>Remove settings from system</string>
+       <string>Change sdk path...</string>
       </property>
      </widget>
     </item>
-    <item row="4" column="1">
-     <widget class="QPushButton" name="buttonDefaults">
-      <property name="minimumSize">
-       <size>
-        <width>100</width>
-        <height>0</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>Set defaults</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="1">
-     <widget class="QPushButton" name="buttonSaveSettings">
-      <property name="minimumSize">
-       <size>
-        <width>100</width>
-        <height>0</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>Save Settings</string>
-      </property>
-      <property name="autoDefault">
-       <bool>false</bool>
-      </property>
-      <property name="default">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="1">
-     <widget class="QPushButton" name="buttonAssociate">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="text">
-       <string>Associate apk files with QtADB</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="2" rowspan="5">
+    <item row="1" column="2" rowspan="4">
      <widget class="QStackedWidget" name="stackedSettings">
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="pageSettingsGeneral">
        <widget class="QWidget" name="layoutWidget_4">
@@ -179,7 +41,7 @@
          <rect>
           <x>40</x>
           <y>30</y>
-          <width>358</width>
+          <width>400</width>
           <height>481</height>
          </rect>
         </property>
@@ -226,6 +88,11 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
            <property name="readOnly">
             <bool>true</bool>
            </property>
@@ -238,6 +105,12 @@
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>仿宋</family>
+             <pointsize>14</pointsize>
+            </font>
            </property>
            <property name="text">
             <string>Change font</string>
@@ -265,6 +138,11 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
            <property name="readOnly">
             <bool>true</bool>
            </property>
@@ -277,6 +155,12 @@
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>仿宋</family>
+             <pointsize>14</pointsize>
+            </font>
            </property>
            <property name="text">
             <string>Change font</string>
@@ -310,6 +194,12 @@
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>仿宋</family>
+             <pointsize>14</pointsize>
+            </font>
            </property>
            <property name="text">
             <string>Change font</string>
@@ -466,13 +356,13 @@
          <item row="9" column="2" colspan="3">
           <widget class="QSpinBox" name="spinToolBarIconSize">
            <property name="minimum">
-            <number>20</number>
+            <number>48</number>
            </property>
            <property name="maximum">
-            <number>50</number>
+            <number>64</number>
            </property>
            <property name="value">
-            <number>32</number>
+            <number>48</number>
            </property>
           </widget>
          </item>
@@ -558,7 +448,7 @@
              <rect>
               <x>10</x>
               <y>20</y>
-              <width>351</width>
+              <width>368</width>
               <height>256</height>
              </rect>
             </property>
@@ -950,7 +840,7 @@
            <property name="title">
             <string>Both</string>
            </property>
-           <widget class="QWidget" name="">
+           <widget class="QWidget" name="layoutWidget">
             <property name="geometry">
              <rect>
               <x>10</x>
@@ -1569,7 +1459,16 @@
          </rect>
         </property>
         <layout class="QGridLayout" name="shellGridLayout">
-         <property name="margin">
+         <property name="leftMargin">
+          <number>6</number>
+         </property>
+         <property name="topMargin">
+          <number>6</number>
+         </property>
+         <property name="rightMargin">
+          <number>6</number>
+         </property>
+         <property name="bottomMargin">
           <number>6</number>
          </property>
          <item row="0" column="1">
@@ -1678,9 +1577,137 @@
      </widget>
     </item>
     <item row="6" column="1">
-     <widget class="QPushButton" name="pushButtonChangeSDKPath">
+     <spacer name="verticalSpacer_38">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>5</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="0" column="2">
+     <spacer name="verticalSpacer_37">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>5</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="1" column="1">
+     <widget class="QListWidget" name="listWidget">
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <item>
+       <property name="text">
+        <string>General</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>File manager</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>App manager</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Animations</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Shell</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="1" column="3">
+     <spacer name="verticalSpacer_39">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>5</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="1" column="0">
+     <spacer name="verticalSpacer_40">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>5</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="4" column="1">
+     <widget class="QPushButton" name="buttonRemoveSettings">
       <property name="text">
-       <string>Change sdk path...</string>
+       <string>Remove settings from system</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QPushButton" name="buttonDefaults">
+      <property name="minimumSize">
+       <size>
+        <width>100</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Set defaults</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QPushButton" name="buttonSaveSettings">
+      <property name="minimumSize">
+       <size>
+        <width>100</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Save Settings</string>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+      <property name="default">
+       <bool>true</bool>
       </property>
      </widget>
     </item>

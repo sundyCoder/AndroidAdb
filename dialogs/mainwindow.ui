@@ -12,14 +12,19 @@
   </property>
   <property name="font">
    <font>
-    <family>Times New Roman</family>
+    <family>仿宋</family>
+    <pointsize>16</pointsize>
    </font>
   </property>
   <property name="cursor">
    <cursorShape>ArrowCursor</cursorShape>
   </property>
   <property name="windowTitle">
-   <string extracomment="Main window title">QtADB - Your android manager</string>
+   <string extracomment="Main window title">执法视频管理器</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../zasoby.qrc">
+    <normaloff>:/icons/wenxun.png</normaloff>:/icons/wenxun.png</iconset>
   </property>
   <property name="windowOpacity">
    <double>1.000000000000000</double>
@@ -29,6 +34,12 @@
   </property>
   <property name="autoFillBackground">
    <bool>false</bool>
+  </property>
+  <property name="iconSize">
+   <size>
+    <width>48</width>
+    <height>48</height>
+   </size>
   </property>
   <property name="documentMode">
    <bool>false</bool>
@@ -106,6 +117,10 @@
             <property name="text">
              <string extracomment="refresh state when disconnected">Refresh</string>
             </property>
+            <property name="icon">
+             <iconset resource="../zasoby.qrc">
+              <normaloff>:/icons/refresh.png</normaloff>:/icons/refresh.png</iconset>
+            </property>
            </widget>
           </item>
           <item row="4" column="1">
@@ -164,47 +179,50 @@
      <x>0</x>
      <y>0</y>
      <width>764</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>仿宋</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
    <widget class="QMenu" name="menuTryb">
+    <property name="font">
+     <font>
+      <family>仿宋</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
     <property name="title">
      <string>&amp;Connection</string>
     </property>
     <addaction name="actionUsb"/>
-    <addaction name="actionWifi"/>
    </widget>
    <widget class="QMenu" name="menu_Pomoc">
+    <property name="font">
+     <font>
+      <family>仿宋</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
     <property name="title">
      <string>&amp;Help</string>
     </property>
     <addaction name="actionO_programie"/>
-    <addaction name="actionCheck_for_updates"/>
     <addaction name="actionEnter_register_key"/>
    </widget>
    <widget class="QMenu" name="menu">
+    <property name="font">
+     <font>
+      <family>仿宋</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
     <property name="title">
      <string>&amp;Tools</string>
     </property>
-    <widget class="QMenu" name="menuAdb">
-     <property name="title">
-      <string>Adb</string>
-     </property>
-     <addaction name="actionAdbReboot"/>
-     <addaction name="actionAdbRebootBootloader"/>
-     <addaction name="actionAdbRebootRecovery"/>
-     <addaction name="actionAdbPowerOff"/>
-    </widget>
-    <widget class="QMenu" name="menuFastboot">
-     <property name="title">
-      <string>Fastboot</string>
-     </property>
-     <addaction name="actionFastbootReboot"/>
-     <addaction name="actionFastbootRebootBootloader"/>
-     <addaction name="actionFastbootPowerOff"/>
-    </widget>
-    <addaction name="menuAdb"/>
-    <addaction name="menuFastboot"/>
    </widget>
    <addaction name="menuTryb"/>
    <addaction name="menu"/>
@@ -229,7 +247,16 @@
   </widget>
   <action name="actionUsb">
    <property name="text">
-    <string>usb</string>
+    <string>USB</string>
+   </property>
+   <property name="toolTip">
+    <string>USB</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>仿宋</family>
+     <pointsize>14</pointsize>
+    </font>
    </property>
   </action>
   <action name="actionWifi">
@@ -241,6 +268,12 @@
    <property name="text">
     <string>about</string>
    </property>
+   <property name="font">
+    <font>
+     <family>仿宋</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
   </action>
   <action name="actionPolski">
    <property name="text">
@@ -251,10 +284,22 @@
    <property name="text">
     <string>Reboot</string>
    </property>
+   <property name="font">
+    <font>
+     <family>仿宋</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
   </action>
   <action name="actionAdbRebootBootloader">
    <property name="text">
     <string>Reboot bootloader</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>仿宋</family>
+     <pointsize>14</pointsize>
+    </font>
    </property>
   </action>
   <action name="actionAdbRebootRecovery">
@@ -291,12 +336,20 @@
    <property name="text">
     <string>enter register key</string>
    </property>
+   <property name="font">
+    <font>
+     <family>仿宋</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
   <tabstop>buttonRefresh</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="../zasoby.qrc"/>
+ </resources>
  <connections/>
 </ui>

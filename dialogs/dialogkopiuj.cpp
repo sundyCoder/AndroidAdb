@@ -167,10 +167,14 @@ void dialogKopiuj::nextFile(QString fileName, QString sourcePath, QString target
     pathFrom = sourcePath;
     pathTo = targetPath;
 
+    // sundy
+#if 0
     if (pathFrom.length()>50)
         pathFrom = "..." + pathFrom.right(47);
     if (pathTo.length()>50)
         pathTo = "..." + pathTo.right(47);
+#endif
+
     this->ui->labelFile->setText(fileName);
     this->ui->labelFrom->setText(pathFrom);
     this->ui->labelTo->setText(pathTo);
@@ -228,13 +232,24 @@ void ThreadCopy::run()
             sourceDir = file.filePath;
             sourceDir = sourceDir.left(sourceDir.lastIndexOf("/") + 1);
             targetDir = this->targetPath+fileName;
-            targetDir = targetDir.left(targetDir.lastIndexOf("/") + 1);
+            targetDir = targetDir.left(targetDir.lastIndexOf("/") + 1);            
+
+            QString midDir = sourceDir.left(sourceDir.lastIndexOf("/") +1 );
+            //std::cout<<"dir1:"<<midDir.toStdString()<<std::endl;
+            QString tarDirPath = "C:" + midDir;
+            if(!QDir().exists(tarDirPath)){
+                QDir().mkpath(tarDirPath);
+            }
             QString tmp = file.filePath;
             tmp.remove(sourceDir);
             emit this->nextFile(tmp, sourceDir, targetDir, fileSize, counter);
             dialogKopiuj::fileRemove(this->targetPath+fileName, this->mode);
+//          command = "\""+sdk+"\""+"adb pull \""+codec->toUnicode(file.filePath.toUtf8())+"\" "+"\""+
+//                      this->targetPath+fileName+ "\"";
+
             command = "\""+sdk+"\""+"adb pull \""+codec->toUnicode(file.filePath.toUtf8())+"\" "+"\""+
-                      this->targetPath+fileName+"\"";
+                        tarDirPath + "\"";
+
             qDebug()<<"Copy - "<<command;
             proces->start(command);
             proces->waitForFinished(-1);

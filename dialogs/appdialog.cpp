@@ -428,7 +428,7 @@ void ThreadBackup::run()
     QSettings settings;
     QByteArray ba;
     App app;
-    proces->start("\"" + this->sdk + "\"" + "adb shell busybox mkdir /sdcard/QtADB/backup");
+    proces->start("\"" + this->sdk + "\"" + "adb shell busybox mkdir /sdcard/WxADB/backup");
     proces->waitForFinished(-1);
     qDebug()<<"mkdir - "<<proces->readAll();
     while (this->appList.size() > 0)
@@ -441,11 +441,11 @@ void ThreadBackup::run()
 //        version = this->appList.version.takeFirst();
 
         emit this->nextApp(app);
-        proces->start("\""+this->sdk+"\""+"adb shell echo -e \"app.name="+codec->toUnicode(app.appName.toUtf8())+"\" > /sdcard/QtADB/backup/"+app.packageName+".txt");
+        proces->start("\""+this->sdk+"\""+"adb shell echo -e \"app.name="+codec->toUnicode(app.appName.toUtf8())+"\" > /sdcard/WxADB/backup/"+app.packageName+".txt");
         proces->waitForFinished(-1);
-        proces->start("\""+this->sdk+"\""+"adb shell echo -e \"app.size="+app.appSize+"\" >> /sdcard/QtADB/backup/"+app.packageName+".txt");
+        proces->start("\""+this->sdk+"\""+"adb shell echo -e \"app.size="+app.appSize+"\" >> /sdcard/WxADB/backup/"+app.packageName+".txt");
         proces->waitForFinished(-1);
-        proces->start("\""+this->sdk+"\""+"adb shell echo -e \"app.version="+app.appVersion+"\" >> /sdcard/QtADB/backup/"+app.packageName+".txt");
+        proces->start("\""+this->sdk+"\""+"adb shell echo -e \"app.version="+app.appVersion+"\" >> /sdcard/WxADB/backup/"+app.packageName+".txt");
         proces->waitForFinished(-1);
         ba = settings.value("apps/"+app.packageName+"/icon").toByteArray();
         QFile ikona(QDir::currentPath()+"/icons/"+app.packageName+".png");
@@ -454,7 +454,7 @@ void ThreadBackup::run()
             ikona.write(ba);
         }
         ikona.close();
-        proces->start("\""+this->sdk+"\""+"adb push \""+QDir::currentPath()+"/icons/"+app.packageName+".png\" /sdcard/QtADB/backup/");
+        proces->start("\""+this->sdk+"\""+"adb push \""+QDir::currentPath()+"/icons/"+app.packageName+".png\" /sdcard/WxADB/backup/");
         proces->waitForFinished(-1);
         output = proces->readAll();
         qDebug()<<"Backup app - "<<output;
@@ -462,14 +462,14 @@ void ThreadBackup::run()
         ikona.remove();
         if (this->withData)
         {
-            proces->start("\""+this->sdk+"\""+"adb shell tar -zcf /sdcard/QtADB/backup/"+app.packageName+".DATA.tar.gz /data/data/"+app.packageName);
+            proces->start("\""+this->sdk+"\""+"adb shell tar -zcf /sdcard/WxADB/backup/"+app.packageName+".DATA.tar.gz /data/data/"+app.packageName);
             proces->waitForFinished(-1);
             output = proces->readAll();
             qDebug()<<"Backup app - "<<output;
         }
         if (this->withApk)
         {
-            proces->start("\""+this->sdk+"\""+"adb shell cp "+app.appFile+ " /sdcard/QtADB/backup/"+app.packageName+".apk");
+            proces->start("\""+this->sdk+"\""+"adb shell cp "+app.appFile+ " /sdcard/WxADB/backup/"+app.packageName+".apk");
             proces->waitForFinished(-1);
             output = proces->readAll();
             qDebug()<<"Backup app - "<<output;
@@ -492,13 +492,13 @@ void ThreadRestore::run()
         emit this->nextApp(app);
         if (this->withApk)
         {
-            proces->start("\""+this->sdk+"\""+"adb shell pm install /sdcard/QtADB/backup/" +app.packageName + ".apk");
+            proces->start("\""+this->sdk+"\""+"adb shell pm install /sdcard/WxADB/backup/" +app.packageName + ".apk");
             proces->waitForFinished(-1);
             output = proces->readAll();
             qDebug()<<"Restore pm - "<<output;
             if (output.contains("Failure [INSTALL_FAILED_INSUFFICIENT_STORAGE]"))
             {
-                proces->start("\""+this->sdk+"\""+"adb shell cp /sdcard/QtADB/backup/" +app.packageName + ".apk /data/local/tmp/");
+                proces->start("\""+this->sdk+"\""+"adb shell cp /sdcard/WxADB/backup/" +app.packageName + ".apk /data/local/tmp/");
                 proces->waitForFinished(-1);
                 output = proces->readAll();
                 qDebug()<<"Restore cp - "<<output;
@@ -523,11 +523,11 @@ void ThreadRestore::run()
                     proces->waitForFinished(-1);
                     output = proces->readAll();
                     qDebug()<<"Restore rm - "<<output;
-                    proces->start("\""+this->sdk+"\""+"adb shell busybox tar -xzf /sdcard/QtADB/backup/"+app.packageName+".DATA.tar.gz -C /");
+                    proces->start("\""+this->sdk+"\""+"adb shell busybox tar -xzf /sdcard/WxADB/backup/"+app.packageName+".DATA.tar.gz -C /");
                     proces->waitForFinished(-1);
                     output = proces->readAll();
                     qDebug()<<"Restore tar - "<<output;
-                    proces->start("\""+this->sdk+"\""+"adb shell \"cat /data/system/packages.xml|busybox grep '^<package.*"+app.packageName+"'\"");
+                    proces->start("\""+this->sdk+"\""+"adb shell \"busybox cat /data/system/packages.xml|busybox grep '^<package.*"+app.packageName+"'\"");
                     proces->waitForFinished(-1);
                     output = proces->readAll();
                     qDebug()<<"Restore cat - "<<output;
@@ -560,7 +560,7 @@ void ThreadRestore::run()
             proces->waitForFinished(-1);
             output = proces->readAll();
             qDebug()<<"Restore rm - "<<output;
-            proces->start("\""+this->sdk+"\""+"adb shell busybox tar -xzf /sdcard/QtADB/backup/"+app.packageName+".DATA.tar.gz -C /");
+            proces->start("\""+this->sdk+"\""+"adb shell busybox tar -xzf /sdcard/WxADB/backup/"+app.packageName+".DATA.tar.gz -C /");
             proces->waitForFinished(-1);
             output = proces->readAll();
             qDebug()<<"Restore tar - "<<output;

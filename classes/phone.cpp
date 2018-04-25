@@ -24,6 +24,7 @@
 #include <QFileIconProvider>
 #include <QApplication>
 #include <QStyle>
+#include <iostream>
 
 void ConnectionThread::run()
 {
@@ -196,24 +197,31 @@ QList<File> *Phone::getFileList()
 
     qDebug()<<QDateTime::currentDateTime().toString("hh:mm:ss");
     qDebug()<<"Phone::getFileList() - "<<this->getPath();
-    if (this->hiddenFiles)
+    if (this->hiddenFiles){
         command="\""+this->sdk+"\""+"adb shell \"busybox ls -l -a \'"+this->codec->toUnicode(this->getPath().toUtf8())+"\'\"";
-    else
+        //std::cout<<"command:"<<command.toStdString()<<std::endl;
+    }else{
         command="\""+this->sdk+"\""+"adb shell \"busybox ls -l \'"+this->codec->toUnicode(this->getPath().toUtf8())+"\'\"";
+        //std::cout<<"command:"<<command.toStdString()<<std::endl;
+    }
 
     qDebug()<<"Phone::getFileList() - "<<command;
     phone->start(command);
     QString outputLine="1";
     QStringList outputLines;
 
-//    while (!outputLine.isEmpty())
-//    {
-//        qApp->processEvents();
-//        phone->waitForReadyRead(-1);
-//        outputLine = phone->readLine();
-//        qDebug()<<"Phone::getFileList() - "<<outputLine;
-//        outputLines.append(outputLine);
-//    }
+#if 0
+    while (!outputLine.isEmpty())
+    {
+        qApp->processEvents();
+        phone->waitForReadyRead(-1);
+        outputLine = phone->readLine();
+        qDebug()<<"Phone::getFileList() - "<<outputLine;
+        std::cout<<"Phone::getFileList() - "<<outputLine.toStdString()<<std::endl;
+        outputLines.append(outputLine);
+    }
+#endif
+
     phone->waitForFinished(-1);
     outputLine=phone->readAll();
     outputLines=outputLine.split("\n");
@@ -808,6 +816,7 @@ bool Phone::remove(QString name)
 
     command="\""+this->sdk+"\""+"adb shell busybox rm -r "+"\""+this->codec->toUnicode(this->getPath().toUtf8())+
             this->codec->toUnicode(name.toUtf8())+"\"";
+
     phone->start(command);
 
     phone->waitForReadyRead(-1);
@@ -920,7 +929,6 @@ QStringList Phone::getGoogleAccounts()
     sdk = settings.value("sdkPath").toString();
     QString operation = "\""+sdk+"\""+ "adb shell busybox grep gmail-ls /data/system/sync/accounts.xml";
 //    QString operation = "\""+sdk+"\""+ "adb shell su -c 'busybox grep gmail-ls /data/system/sync/accounts.xml'";
-//su -c 'busybox grep gmail-ls /data/system/sync/accounts.xml'
     QProcess *proces=new QProcess;
     proces->start(operation);
     proces->waitForFinished(-1);

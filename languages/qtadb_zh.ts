@@ -1181,7 +1181,7 @@ Make sure that you are allowed to do this</source>
         <location filename="../dialogs/mainwindow.cpp" line="75"/>
         <source>Phone info</source>
         <comment>phone info button</comment>
-        <translation>手机信息</translation>
+        <translation>执法仪信息</translation>
     </message>
     <message>
         <location filename="../dialogs/mainwindow.cpp" line="76"/>

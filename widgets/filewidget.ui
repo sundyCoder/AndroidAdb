@@ -25,20 +25,10 @@
      <height>160</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="gridLayout" columnstretch="0,1,1,0">
+   <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,0,0">
     <property name="spacing">
      <number>5</number>
     </property>
-    <item row="1" column="1">
-     <widget class="QLabel" name="leftLabelTitle">
-      <property name="text">
-       <string extracomment="table title">computer</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
     <item row="1" column="2">
      <widget class="QLabel" name="rightLabelTitle">
       <property name="text">
@@ -49,10 +39,23 @@
       </property>
      </widget>
     </item>
+    <item row="1" column="1">
+     <widget class="QLabel" name="leftLabelTitle">
+      <property name="text">
+       <string extracomment="table title">computer</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
     <item row="2" column="1">
      <layout class="QHBoxLayout" name="horizontalLayout_4">
       <item>
        <widget class="QPushButton" name="leftPushButtonFolderUp">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="maximumSize">
          <size>
           <width>30</width>
@@ -84,6 +87,11 @@
         <property name="insertPolicy">
          <enum>QComboBox::NoInsert</enum>
         </property>
+        <item>
+         <property name="text">
+          <string>C:/sdcard</string>
+         </property>
+        </item>
        </widget>
       </item>
       <item>
@@ -142,6 +150,9 @@
      <layout class="QHBoxLayout" name="horizontalLayout_3">
       <item>
        <widget class="QPushButton" name="rightPushButtonFolderUp">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="maximumSize">
          <size>
           <width>30</width>
@@ -175,27 +186,7 @@
         </property>
         <item>
          <property name="text">
-          <string notr="true">/sdcard/</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string notr="true">/data/</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string notr="true">/data/app/</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string notr="true">/system/</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string notr="true">/system/app/</string>
+          <string notr="true">/sdcard/Video</string>
          </property>
         </item>
        </widget>
@@ -252,6 +243,28 @@
        </widget>
       </item>
      </layout>
+    </item>
+    <item row="3" column="1">
+     <layout class="QVBoxLayout" name="computerLayout"/>
+    </item>
+    <item row="3" column="2">
+     <layout class="QVBoxLayout" name="phoneLayout"/>
+    </item>
+    <item row="3" column="0">
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>5</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
     </item>
     <item row="4" column="1" colspan="2">
      <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -417,28 +430,6 @@
       </item>
      </layout>
     </item>
-    <item row="3" column="1">
-     <layout class="QVBoxLayout" name="computerLayout"/>
-    </item>
-    <item row="3" column="2">
-     <layout class="QVBoxLayout" name="phoneLayout"/>
-    </item>
-    <item row="3" column="0">
-     <spacer name="horizontalSpacer">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Fixed</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>5</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
     <item row="3" column="3">
      <spacer name="horizontalSpacer_2">
       <property name="orientation">
@@ -471,6 +462,13 @@
       </property>
      </spacer>
     </item>
+    <item row="5" column="2">
+     <widget class="QLabel" name="rightLabelSelectedCount">
+      <property name="text">
+       <string notr="true">0 selected</string>
+      </property>
+     </widget>
+    </item>
     <item row="6" column="1">
      <spacer name="verticalSpacer_2">
       <property name="orientation">
@@ -489,13 +487,6 @@
     </item>
     <item row="5" column="1">
      <widget class="QLabel" name="leftLabelSelectedCount">
-      <property name="text">
-       <string notr="true">0 selected</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="2">
-     <widget class="QLabel" name="rightLabelSelectedCount">
       <property name="text">
        <string notr="true">0 selected</string>
       </property>

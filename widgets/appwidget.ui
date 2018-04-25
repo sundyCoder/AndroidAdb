@@ -123,7 +123,7 @@
        </layout>
       </item>
       <item>
-       <layout class="QVBoxLayout" name="verticalLayout_4" stretch="0,0,0,0,0,0,1">
+       <layout class="QVBoxLayout" name="verticalLayout_4" stretch="0,0,0,0,1">
         <property name="spacing">
          <number>6</number>
         </property>
@@ -511,58 +511,6 @@
           <property name="icon">
            <iconset resource="../zasoby.qrc">
             <normaloff>:/icons/refresh.png</normaloff>:/icons/refresh.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>20</width>
-            <height>20</height>
-           </size>
-          </property>
-          <property name="toolButtonStyle">
-           <enum>Qt::ToolButtonTextBesideIcon</enum>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="buttonOpenMarket">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>Open in Market (Phone)</string>
-          </property>
-          <property name="icon">
-           <iconset resource="../zasoby.qrc">
-            <normaloff>:/icons/market.png</normaloff>:/icons/market.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>20</width>
-            <height>20</height>
-           </size>
-          </property>
-          <property name="toolButtonStyle">
-           <enum>Qt::ToolButtonTextBesideIcon</enum>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="buttonAppBrain">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>Open in Market (PC)</string>
-          </property>
-          <property name="icon">
-           <iconset resource="../zasoby.qrc">
-            <normaloff>:/icons/market.png</normaloff>:/icons/market.png</iconset>
           </property>
           <property name="iconSize">
            <size>

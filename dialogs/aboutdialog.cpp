@@ -39,12 +39,12 @@ AboutDialog::AboutDialog(QWidget *parent) :
     this->label_7->setFont(font);
     this->label_8->setFont(font);
     this->label_9->setFont(font);
-    this->label_10->setFont(font);
+    //this->label_10->setFont(font);
     this->okButton->setFont(font);
     this->versionLabel->setFont(font);
-    this->label->setFont(font);
-    this->label_13->setFont(font);
-    this->label_14->setFont(font);
+//    this->label->setFont(font);
+//    this->label_13->setFont(font);
+//    this->label_14->setFont(font);
 
     connect(this->okButton, SIGNAL(clicked()), this, SLOT(close()));
 }

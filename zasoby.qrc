@@ -36,6 +36,7 @@
         <file alias="appBrain.png">images/appBrain.png</file>
         <file alias="logcat.png">images/logcat.png</file>
         <file>images/help.png</file>
+        <file alias="wenxun.png">images/wenxun.png</file>
     </qresource>
     <qresource prefix="/lang">
         <file alias="qtadb_en.qm">languages/qtadb_en.qm</file>

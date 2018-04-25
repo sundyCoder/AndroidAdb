@@ -31,7 +31,7 @@ SettingsWidget::SettingsWidget(QWidget *parent) :
 {
     ui->setupUi(this);
 #ifdef Q_OS_WIN
-    this->ui->buttonAssociate->show();
+    //this->ui->buttonAssociate->show();
 #else
     this->ui->buttonAssociate->hide();
 #endif
@@ -212,7 +212,7 @@ void SettingsWidget::setSettingsToDefaults()
     this->fontShell = qApp->font();
 
     this->toolBarHideButton = true;
-    this->toolBarIconSize = QSize(32, 32);
+    this->toolBarIconSize = QSize(48, 48);
     this->toolBarStyle = Qt::ToolButtonTextUnderIcon;
     this->toolBarArea = Qt::LeftToolBarArea;
 
@@ -406,7 +406,7 @@ void SettingsWidget::getSettings()
     this->showAppName = settings->value("showAppName", false).toBool();
     this->getQR = settings->value("getQR", false).toBool();
     this->getCyrketVer = settings->value("getCyrketVer", false).toBool();
-    this->enableAnimations = settings->value("enableAnimations", true).toBool();
+    this->enableAnimations = settings->value("enableAnimations", false).toBool();
     this->animationCurve = settings->value("curve", int(QEasingCurve::OutBounce)).toInt();
     this->clearSettings = false;
     this->showCopyConfirmation = settings->value("showCopyConfirmation", true).toBool();
@@ -457,7 +457,7 @@ void SettingsWidget::getSettings()
         this->toolBarHideButton = true;
     else
         this->toolBarHideButton = false;
-    int size = settings->value("toolBarIconSize", 32).toInt();
+    int size = settings->value("toolBarIconSize", 48).toInt();
     this->toolBarIconSize = QSize(size, size);
     int value = settings->value("toolBarStyle", 3).toInt();
     switch(value)
@@ -761,16 +761,16 @@ void SettingsWidget::on_buttonAssociate_clicked()
         return;
 
     QSettings settings("HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\", QSettings::NativeFormat);
-    settings.setValue(".apk/Default", "QtADB.File.apk");
+    settings.setValue(".apk/Default", "WxADB.File.apk");
     QString tmp;
     tmp = qApp->arguments().at(0);
     tmp.replace("/", "\\");
-    settings.setValue("QtADB.File.apk/DefaultIcon/Default", tmp + ",0");
-    settings.setValue("QtADB.File.apk/shell/open/command/Default",
+    settings.setValue("WxADB.File.apk/DefaultIcon/Default", tmp + ",0");
+    settings.setValue("WxADB.File.apk/shell/open/command/Default",
                       "\"" + tmp + "\" \"%1\"");
-    settings.setValue("QtADB.File.apk/shell/Install/Default",
+    settings.setValue("WxADB.File.apk/shell/Install/Default",
                       tr("Install apk"));
-    settings.setValue("QtADB.File.apk/shell/Install/command/Default",
+    settings.setValue("WxADB.File.apk/shell/Install/command/Default",
                       "\"" + tmp + "\" \"-install\" \"%1\"");
 }
 

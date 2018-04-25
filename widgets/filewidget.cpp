@@ -1650,9 +1650,10 @@ void FileWidget::rightComboBox()
 {
     if (phone->cd(ui->rightComboBox->lineEdit()->text()))
         this->rightDisplay();
+
 //    QString path=this->phone->getPath();
 //    this->phone->setPath(ui->rightComboBox->lineEdit()->text().toUtf8());
-//    if (this->phone->cd("."))
+//    if (this->phone->cd("/sdcard/"))
 //    {
 //        this->rightDisplay();
 //    }
